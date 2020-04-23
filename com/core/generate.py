@@ -49,8 +49,15 @@ class Generate(Singleton):
             read_path = "{}/{}".format(self.input_file_path, img_path)
             # img = cv2.imread(read_path, cv2.IMREAD_UNCHANGED)
             img = cv2.imdecode(np.fromfile(read_path, dtype=np.uint8), -1)  # 中文路径处理
+            height, width, deep = img.shape
 
-            height, width, _ = img.shape
+            # 支持4通道
+            if deep != 4:  # 4通道图片
+                png = np.zeros([height, width, 4], dtype=np.int)
+                png.fill(255)
+                png[:, :, :3] = img[:, :, :3]
+                img = png
+
             print("{}x{}".format(width, height))
             if width > max_width:
                 max_width = width
