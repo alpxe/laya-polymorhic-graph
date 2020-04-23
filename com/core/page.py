@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+import os
+
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QMainWindow
 
@@ -34,6 +37,6 @@ class Page(QMainWindow, Ui_Form):
         alignH = align_list[self.alignHBox.currentIndex()]
         alignV = align_list[self.alignVBox.currentIndex()]
         padding = int(self.paddingTxt.text()) if (len(self.paddingTxt.text()) > 0) else 0
-        Generate().setting(arrange, alignH, alignV, padding)
+        auto_delete = self.deleteCheck.isChecked()
+        Generate().setting(arrange, alignH, alignV, padding, auto_delete)
         Generate().run()
-        pass
