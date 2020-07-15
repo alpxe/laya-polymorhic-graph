@@ -2,9 +2,11 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from com.core.page import Page
+
 """
 pyinstaller --onefile --clean --noconfirm --hidden-import pkg_resources.py2_warn --noconsole  --icon="icon.ico" main.py
 """
+
 
 class Main:
     def __init__(self):
@@ -17,4 +19,3 @@ class Main:
 
 if __name__ == "__main__":
     Main()
-

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import shutil
+import platform
 
 import numpy as np
 import cv2
@@ -18,8 +19,8 @@ class Generate(Singleton):
     auto_delete = False
 
     root_path = os.path.abspath(os.path.dirname("."))
-    input_file_path = "assets\\input"
-    output_file_path = "assets\\output"
+    input_file_path = os.path.join('assets', 'input')  # "assets\\input"
+    output_file_path = os.path.join('assets', 'output')
 
     def setting(self, arrange, alignH, alignV, padding, auto_delete):
         self.arrange = arrange
@@ -114,4 +115,7 @@ class Generate(Singleton):
         if not os.path.exists(fp):
             os.makedirs(fp)
 
-        os.system("start explorer {}".format(os.path.join(self.root_path, fp)))
+        if platform.system() == "Darwin":
+            os.system('open {}'.format(os.path.join(self.root_path, fp)))
+        else:
+            os.system("start explorer {}".format(os.path.join(self.root_path, fp)))
