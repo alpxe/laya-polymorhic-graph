@@ -9,7 +9,7 @@ import json
 
 class Main:
     # 项目路径
-    project = "/Users/alpxe/code/h5/laya/laya-game-box"
+    project = "/Users/alpxe/code/h5/laya/laya-duudle"
 
     def __init__(self):
         ui_url = os.path.join(self.project, "src/ui/layaMaxUI.ts")
