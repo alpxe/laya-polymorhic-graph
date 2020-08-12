@@ -11,6 +11,8 @@ main.spec
 assets/
 build/
 dist/
+protofile/
+src/
 
 # Executables
 .DS_Store
